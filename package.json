@@ -12,13 +12,16 @@
   "bugs": {
     "url": "https://github.com/celestiary/web/issues"
   },
+  {
   "scripts": {
-    "build": "yarn clean && xcopy \"public\\*\" \"docs\" /E /I && xcopy \"js\\shaders\" \"docs\\js\\shaders\" /E /I && node esbuild/build.js",
-    "clean": "rimraf docs && xcopy \"public\" \"docs\" /E /I",
+    "clean": "rimraf docs && mkdir -p docs",
+    "build": "yarn clean && cp -r public/* docs && cp -r js/shaders docs/js/shaders && node esbuild/build.js",
     "lint": "yarn eslint js",
     "serve": "yarn build && node esbuild/serve.js",
     "test": "bun test"
-  },
+  }
+},
+
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
